@@ -1,0 +1,101 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 Avenir-Book;}
+{\colortbl;\red255\green255\blue255;\red131\green108\blue40;\red255\green255\blue255;\red0\green0\blue0;
+\red0\green0\blue0;\red34\green34\blue34;\red36\green41\blue46;}
+{\*\expandedcolortbl;;\csgenericrgb\c51200\c42300\c15700;\csgray\c100000;\csgenericrgb\c0\c0\c0;
+\cssrgb\c0\c0\c0;\csgenericrgb\c13333\c13333\c13333;\csgenericrgb\c14118\c16078\c18039;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14920\viewh11200\viewkind0
+\deftab543
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f0\fs50 \cf2 \cb3 # \cf4 Computation of objective metrics\
+
+\f1\fs24 \cf0 \
+
+\f0\fs26 \cf4 This software provides computations of the following objective metrics on the CSIQ database [1]:\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb1 MSE, SNR, PSNR, PSNR-HVS, PSNR-HVS-M, UQI, SSIM, MS-SSIM, M-SVD, QILV, IFC, VIF, VIFp,\
+FSIM, IW-MSE, IW-PSNR, IW-SSIM, WSNR, VSNR. Codes are obtained from implementations \
+within the references in the end of this document.\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb3 The software also plots the results (1-DMOS) against subjective scores for comparison, and computes the\
+Pearson Correlation Coefficient between objective results and subjective ratings in CSIQ database.
+\f2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf5 \
+Plots are saved in the same folder as .png files.\
+\
+PSNR-HVS, PSNR-HVS-M and VIFp results are computed using the VQMT software [2]. \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf4 \cb3 The OpenCV library (http://opencv.willowgarage.com/wiki/) needs to be installed to run VQMT.
+\f1\fs24 \cf0 \
+
+\f0\fs26 \cf4 Only the core and imgproc modules are required.\
+\
+
+\fs50 \cf2 # \cf4 PREREQUISITE\
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf5 \cb1 \
+MATLAB (versions since 2013)\
+\cf4 \cb3 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\fs50 \cf2 # \cf4 USAGE\
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf5 \cb1 \
+computeObjective.m can be called via terminal, or within MATLAB.\
+\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\fs50 \cf2 \cb3 # \cf4 REFERENCES
+\fs26 \cf5 \cb1 \
+\pard\pardeftab720\li426\fi-426\ri380\partightenfactor0
+\ls1\ilvl0
+\f3\i\fs22 \cf0 \
+\pard\pardeftab720\li426\fi-426\ri380\partightenfactor0
+\ls1\ilvl0
+\f0\i0 \cf0 [1]
+\i    CSIQ Image Quality Database
+\i0 , vision.eng.shizuoka.ac.jp/mod/page/view.php?id=23.\
+[2]   https://mmspg.epfl.ch/vqmt\
+\pard\pardeftab720\li426\fi-426\ri380\partightenfactor0
+\ls2\ilvl0\cf0 [3]   Zhou, Wang and \cf6 Alan C. Bovik. \'93A Universal Image Quality Index.\'94 IEEE Signal Processing Letters 9.3 (2002): 81-84.\cf0 \
+\pard\pardeftab720\li426\fi-426\ri380\partightenfactor0
+\ls3\ilvl0\cf6 [4]   Aja-Fernandez, Santiago, et al. "Image quality assessment based on local variance."\'a0
+\i Engineering in Medicine and Biology Society, 2006. EMBS'06. 28th Annual International Conference of the IEEE
+\i0 . IEEE, 2006.\cf0 \
+\ls3\ilvl0\cf6 [5]   Sheikh, Hamid R., Alan C. Bovik, and Gustavo De Veciana. "An information fidelity criterion for image quality assessment using natural scene statistics."\'a0
+\i IEEE Transactions on image processing
+\i0 \'a014.12 (2005): 2117-2128.\cf0 \
+[6]   H.R. Sheikh.and A.C. Bovik, "Image information and visual quality,"\'a0
+\i IEEE Transactions on Image Processing\'a0
+\i0 , vol.15, no.2,pp. 430- 444, Feb. 2006.\
+\ls3\ilvl0\cf6 [7]   Zhang, Lin, et al. "FSIM: A feature similarity index for image quality assessment."\'a0
+\i IEEE transactions on Image Processing
+\i0 20.8 (2011): 2378-2386.\cf0 \
+\ls3\ilvl0\cf6 [8]   Wang, Zhou, and Qiang Li. "Information content weighting for perceptual image quality assessment."\'a0
+\i IEEE Transactions on Image Processing
+\i0 \'a020.5 (2011): 1185-1198.\cf0 \
+\pard\pardeftab720\li426\fi-426\ri380\partightenfactor0
+\ls4\ilvl0\cf6 [9]   Mannos, James, and David Sakrison. "The effects of a visual fidelity criterion of the encoding of images."\'a0
+\i IEEE transactions on Information Theory
+\i0 \'a020.4 (1974): 525-536.\cf0 \
+\ls4\ilvl0\cf6 [10] Mitsa, Theophano, and Krishna Lata Varkur. "Evaluation of contrast sensitivity functions for the formulation of quality measures incorporated in halftoning algorithms."\'a0
+\i Acoustics, Speech, and Signal Processing, 1993. ICASSP-93., 1993 IEEE International Conference on
+\i0 . Vol. 5. IEEE, 1993.\cf0 \
+\pard\pardeftab720\li426\fi-426\ri380\partightenfactor0
+\ls4\ilvl0\cf7 [11] MeTRriX MuX Visual Quality Assessment Package V1.1. https://github.com/sattarab/image-quality-tools. Originally developed at \cf0 http://foulard.ece.cornell.edu/gaubatz/metrix_mux/
+\f3 \cf7 \
+}
