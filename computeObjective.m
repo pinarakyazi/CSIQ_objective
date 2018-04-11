@@ -1,9 +1,9 @@
 % computeObjective  
 %
-%   1- Computes the quality of distorted images in CSIQ database using
+%   1- Computes the quality of distorted images in CSIQ image database using
 %   the following metrics: MSE, SNR, PSNR, PSNR-HVS, PSNR-HVS-M, UQI, SSIM,
 %   MS-SSIM, M-SVD, QILV, IFC, VIF, VIFp, FSIM, IW-MSE, IW-PSNR, IW-SSIM, 
-%   WSNR, VSNR.
+%   WSNR, VSNR, DN.
 %   
 %   2- Plots 1-DMOS vs. result for each image in CSIQ database, for each 
 %   metric.
@@ -35,6 +35,9 @@ distortions = {'AWGN','BLUR','contrast','dst_all','fnoise','JPEG','jpeg2000'};
 
 metricsFolder = '/Users/pinar/Desktop/MMSPG/DigitalEye/objective_metrics/matlab_files';
 addpath(genpath(metricsFolder));
+
+% Matlab PyrTools are used for some of the computations. Add path:
+addpath(genpath('/Users/pinar/Desktop/MMSPG/DigitalEye/objective_metrics/matlab_codes/matlabPyrTools'));
 
 
 %% MSE
@@ -325,6 +328,28 @@ for i = 1:numDist
     VSNRVec(i) = vsnr_modified(srcFile, dstFile, -1, -1);    
 end
 
+%% DN
+
+addpath(genpath('/Users/pinar/Desktop/MMSPG/DigitalEye/objective_metrics/div_norm_metric/standard_V1_model'));
+
+DNvec = zeros(numDist,1);
+
+for i = 1:numDist
+    file = allPngFiles(i).name;
+    [filepath,name,ext] = fileparts(file);
+    parseName = strsplit(file,'.');
+    srcName = parseName{1};
+    dstName = parseName{2};
+    level = parseName{3};
+    dstFile = imread(file);
+    srcFile = imread(strcat(srcName,'.png'));
+    [~,DNvec(i),~]=div_norm_metric(srcFile, dstFile);
+end
+
+%% CIE
+
+
+
 %% Read results of VQMT software to vectors
 
 CSIQFolder = '/Users/pinar/Desktop/MMSPG/DigitalEye/objective_metrics'; % path of computation directory
@@ -359,6 +384,7 @@ featuremat(:,16) = IWPSNRVec_avg;
 featuremat(:,17) = IWSSIMVec_avg;
 featuremat(:,18) = WSNRvec_avg;
 featuremat(:,19) = VSNRVec_avg;
+featruemat(:,20) = DNvec;
 
 csvwrite('CSIQfeaturemat.csv',featuremat);
 
@@ -367,11 +393,14 @@ csvwrite('CSIQfeaturemat.csv',featuremat);
 dmos_sorted = csvread('CSIQdmos_sorted.csv');
 dmos_to_mos = 1-dmos_sorted;
 [dmos_ascending, ascending_indices] = sort(dmos_to_mos, 'ascend');
+load LUT_CSIQ.mat;
+LUT_level = LUT_CSIQ(:,1);
+LUT_type = LUT_CSIQ(:,2);
 LUT_level_sorted_asc = LUT_level(ascending_indices);
 LUT_type_sorted_asc = LUT_type(ascending_indices);
 colors = prism(length(distortions));
 alphas = LUT_level_sorted_asc/5;
-metricNames = {'MSE', 'SNR', 'PSNR', 'PSNR-HVS', 'PSNR-HVS-M', 'UQI', 'SSIM', 'MS-SSIM', 'M-SVD', 'QILV', 'IFC', 'VIF', 'VIFp', 'FSIM', 'IW-MSE', 'IW-PSNR', 'IW-SSIM', 'WSNR', 'VSNR'};
+metricNames = {'MSE', 'SNR', 'PSNR', 'PSNR-HVS', 'PSNR-HVS-M', 'UQI', 'SSIM', 'MS-SSIM', 'M-SVD', 'QILV', 'IFC', 'VIF', 'VIFp', 'FSIM', 'IW-MSE', 'IW-PSNR', 'IW-SSIM', 'WSNR', 'VSNR', 'DN'};
 for i = 1:size(featuremat,2)
     h = figure; hold on; set(gca,'FontSize',12)
     for j = 1:length(dmos_sorted)

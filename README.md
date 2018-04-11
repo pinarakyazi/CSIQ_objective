@@ -1,8 +1,8 @@
 # CSIQ_objective
 
-This software provides computations of the following objective metrics on the CSIQ database [1]:
+This software provides computations of the following objective metrics on the CSIQ image database [1]:
 MSE, SNR, PSNR, PSNR-HVS, PSNR-HVS-M, UQI, SSIM, MS-SSIM, M-SVD, QILV, IFC, VIF, VIFp,
-FSIM, IW-MSE, IW-PSNR, IW-SSIM, WSNR, VSNR. Codes are obtained from implementations
+FSIM, IW-MSE, IW-PSNR, IW-SSIM, WSNR, VSNR, DN. Codes are obtained from implementations
 within the references in the end of this document.
 
 The software also plots the results (1-DMOS) against subjective scores for comparison, and computes the
@@ -25,6 +25,15 @@ to local folder.
 
 Call computeObjective.m in MATLAB.
 
+# CSIQ video database results
+
+VQM and VMAF metrics are computed on the CSIQ video database [13]. 
+
+VQM is computed using VQM software available at https://www.its.bldrdoc.gov/resources/video-quality-research/guides-and-tutorials/description-of-vqm-tools.aspx.
+
+VMAF is computed using VMAF softwate available at https://github.com/Netflix/vmaf
+In case of installation problems, use the Python independent vmafossexec build.
+Example commads for running VMAF on the CSIQ video database are provided in VMAFcommands.txt
 
 # REFERENCES
 
@@ -39,3 +48,5 @@ Call computeObjective.m in MATLAB.
 [9]   Mannos, James, and David Sakrison. "The effects of a visual fidelity criterion of the encoding of images." IEEE transactions on Information Theory 20.4 (1974): 525-536.
 [10] Mitsa, Theophano, and Krishna Lata Varkur. "Evaluation of contrast sensitivity functions for the formulation of quality measures incorporated in halftoning algorithms." Acoustics, Speech, and Signal Processing, 1993. ICASSP-93., 1993 IEEE International Conference on. Vol. 5. IEEE, 1993.
 [11] MeTRriX MuX Visual Quality Assessment Package V1.1. https://github.com/sattarab/image-quality-tools. Originally developed at http://foulard.ece.cornell.edu/gaubatz/metrix_mux/
+[12] Laparra, Valero, Jordi Muñoz-Marí, and Jesús Malo. "Divisive normalization image quality metric revisited." JOSA A 27.4 (2010): 852-864.
+[13] CSIQ Video Quality Database, http://vision.eng.shizuoka.ac.jp/mod/page/view.php?id=24.
