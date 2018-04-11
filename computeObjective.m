@@ -33,7 +33,7 @@ allPngFiles = dir('*.png');
 numDist = length(allPngFiles);
 distortions = {'AWGN','BLUR','contrast','dst_all','fnoise','JPEG','jpeg2000'};
 
-metricsFolder = '/Users/pinar/Desktop/MMSPG/DigitalEye/objective_metrics/matlab_files';
+metricsFolder = '/Users/pinar/Desktop/MMSPG/DigitalEye/objective_metrics/matlab_codes';
 addpath(genpath(metricsFolder));
 
 % Matlab PyrTools are used for some of the computations. Add path:
